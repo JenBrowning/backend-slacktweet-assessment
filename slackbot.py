@@ -20,6 +20,10 @@ import signal
 import os
 import thread
 from slackclient import SlackClient
+# instantiate Slack client
+slack_client = SlackClient(os.environ.get('xoxb-421405103765-605284427574-AOQ9lCjAJMUVtMOZxQQvcpk2'))
+# slackbot's user ID in Slack: value is assigned after the bot starts up
+bot_id = 'varys-my-dragon'
 
 exit_flag = False
 bot_commands = {
@@ -34,7 +38,7 @@ def config_logger():
     """Setup logging configuration"""
     pass
 
-slack_client = SlackClient("xoxb-****************")
+
 def command_loop(bot):
     """Process incoming bot commands"""
     slack_client = SlackClient(bot_user_token)
@@ -71,10 +75,12 @@ class SlackBot:
         self.home = home_channel
 
     def __repr__(self):
-        pass
+        return "Point(sc=%s, home=%s, bot_id=%s)" % (self.sc, self.bot_id, self.home)
+    my_object = Slackbot()
+    print my_object
 
     def __str__(self):
-        pass
+        return "(%s, %s, %s)" % (self.sc, self.bot_id, self.home)
 
     def __enter__(self):
         """Implement this method to make this a context manager"""
